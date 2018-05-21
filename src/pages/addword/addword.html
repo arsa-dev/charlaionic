@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Añadir Palabra</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Palabra</ion-label>
+      <ion-input type="text" [(ngModel)]="word.Word"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Definición</ion-label>
+      <ion-textarea [(ngModel)]="word.Definition"></ion-textarea>
+    </ion-item>
+
+    <button ion-button full (click)="guardar()">Guardar</button>
+
+  </ion-list>
+</ion-content>

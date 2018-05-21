@@ -44,10 +44,6 @@ export class HomePage {
       this.obtenerDatos();
     });
   }
-  
-  public abrirDefinicionEnPagina(word) {
-    this.navCtrl.push(WordPage, { definition: word });
-  }
 
   public alternarBusqueda() {
     this.mostrandobusqueda = !this.mostrandobusqueda;

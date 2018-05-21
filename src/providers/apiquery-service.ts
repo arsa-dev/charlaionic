@@ -48,5 +48,25 @@ export class ApiqueryServiceProvider {
       );
     });
   }
+  
+  public addWord(body: any): Observable<any> {
+    const query = this._http.post(GLOBAL.url + "?a=Dictionaries/AddWord", JSON.stringify(body), { headers: new Headers({
+      "Content-Type": 'application/json'
+    })}).map(res => res.json());
+
+    return Observable.create((observer) => {
+      query.subscribe(
+        Response => {
+          if (Response.Success) {
+            observer.next(Response);
+          } else {
+            observer.error(Response);
+          }
+        }, error => {
+          observer.error(error);
+        }
+      );
+    });
+  }
 
 }
