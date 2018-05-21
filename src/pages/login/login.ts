@@ -10,6 +10,8 @@ export class LoginPage {
   @ViewChild('idDiccionario') idDiccionario: TextInput;
   @ViewChild('passDiccionario') passDiccionario: TextInput;
 
+  mostrandoContrasena: boolean = false;
+
   global: any = {};
 
   constructor(public navCtrl: NavController, private toastCtrl: ToastController) {
@@ -21,10 +23,12 @@ export class LoginPage {
     GLOBAL.idDiccionario = parseInt(this.idDiccionario.value);
     GLOBAL.passDiccionario = this.passDiccionario.value;
 
-    let toast = this.toastCtrl.create({
+    localStorage.setItem('config', JSON.stringify(GLOBAL));
+
+    this.toastCtrl.create({
       message: 'Cambios guardados',
       duration: 3000,
-      position: 'botton'
+      position: 'bottom'
     }).present();
   }
 

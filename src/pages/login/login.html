@@ -18,7 +18,12 @@
 
     <ion-item>
       <ion-label floating>Contraseña</ion-label>
-      <ion-input #passDiccionario type="text" [ngModel]="global.passDiccionario"></ion-input>
+      <ion-input #passDiccionario [type]="mostrandoContrasena ? 'text' : 'password'" [ngModel]="global.passDiccionario"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox [(ngModel)]="mostrandoContrasena"></ion-checkbox>
+      <ion-label>Mostrar</ion-label>
     </ion-item>
 
     <button ion-button full (click)="guardar()">Guardar</button>

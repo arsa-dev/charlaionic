@@ -1,3 +1,4 @@
+import { GLOBAL } from './../providers/global';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -32,6 +33,14 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+    const globalConfig = JSON.parse(localStorage.getItem('config'));
+
+    if (globalConfig) {
+      GLOBAL.idDiccionario = globalConfig.idDiccionario;
+      GLOBAL.passDiccionario = globalConfig.passDiccionario;
+    }
+
   }
 
   openPage(page) {

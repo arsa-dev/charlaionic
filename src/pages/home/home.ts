@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { ApiqueryServiceProvider } from '../../providers/apiquery-service';
 import { WordPage } from '../word/word';
+import { GLOBAL } from '../../providers/global';
 
 @Component({
   selector: 'page-home',
@@ -39,6 +40,13 @@ export class HomePage {
   public abrirDefinicion(word) {
     let profileModal = this.modalCtrl.create(WordPage, { definition: word });
     profileModal.present();
+    profileModal.onDidDismiss(() => {
+      this.obtenerDatos();
+    });
+  }
+  
+  public abrirDefinicionEnPagina(word) {
+    this.navCtrl.push(WordPage, { definition: word });
   }
 
   public alternarBusqueda() {
@@ -66,7 +74,7 @@ export class HomePage {
   }
 
   public obtenerDatos() {
-    this._ApiQuery.getDefinitions(1).subscribe((Response) => {
+    this._ApiQuery.getDefinitions(GLOBAL.idDiccionario).subscribe((Response) => {
       console.log(Response);
       this.resultadosObtenidos = Response["Definitions/GetAllByDictionaryId"];
       this.calcularAleatorio();

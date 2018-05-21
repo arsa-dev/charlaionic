@@ -15,4 +15,7 @@
   <p>
     {{actualword.Definition}}
   </p>
+
+  <button ion-button color="danger" *ngIf="global.passDiccionario" (click)="borrarDefinicion()">Borrar definición</button>
+
 </ion-content>
