@@ -15,22 +15,38 @@
 <ion-content>
 
   <ion-item *ngIf="mostrandobusqueda">
-    <ion-input placeholder="Introduzca la búsqueda"></ion-input>
+    <ion-input [(ngModel)]="filterText" placeholder="Introduzca la búsqueda"></ion-input>
   </ion-item>
 
   <ion-content class="card-background-page">
-    <ion-card (click)="calcularAleatorio()">
+    <!-- Aleatorio -->
+    <ion-card (click)="calcularAleatorio()" *ngIf="filterText==''">
       <img src="https://static.euronews.com/articles/372622/603x339_372622.jpg" />
       <div class="card-title">{{resultadoAleatorio}}</div>
     </ion-card>
 
-    <ion-card>
+    <!-- Ultimas palabras -->
+    <ion-card *ngIf="filterText==''">
       <ion-card-header>
-        Últimas Búsquedas
+        Últimas Palabras añadidas
       </ion-card-header>
 
       <ion-list>
-        <ion-item *ngFor="let p of resultadosObtenidos">
+        <ion-item *ngFor="let p of getUltimasPalabras()" (click)="abrirDefinicion(p)">
+          <ion-icon name="book" item-start></ion-icon>
+          {{p.Word}}
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    
+    <!-- Todas las palabras -->
+    <ion-card>
+      <ion-card-header>
+        Todas las palabras
+      </ion-card-header>
+
+      <ion-list>
+        <ion-item *ngFor="let p of getTodosResultadosFiltrados()" (click)="abrirDefinicion(p)">
           <ion-icon name="book" item-start></ion-icon>
           {{p.Word}}
         </ion-item>

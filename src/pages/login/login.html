@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Definición</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Id de diccionario</ion-label>
+      <ion-input #idDiccionario type="number" [ngModel]="global.idDiccionario"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Contraseña</ion-label>
+      <ion-input #passDiccionario type="text" [ngModel]="global.passDiccionario"></ion-input>
+    </ion-item>
+
+    <button ion-button full (click)="guardar()">Guardar</button>
+
+  </ion-list>
+</ion-content>

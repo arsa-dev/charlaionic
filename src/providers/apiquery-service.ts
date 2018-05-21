@@ -17,7 +17,6 @@ export class ApiqueryServiceProvider {
     return Observable.create((observer) => {
       query.subscribe(
         Response => {
-          console.log(Response);
           if (Response.Success) {
             observer.next(Response);
           } else {
